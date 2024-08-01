@@ -32,6 +32,7 @@ public final class ServiceManager {
     private static ClipboardManager clipboardManager;
     private static ActivityManager activityManager;
     private static CameraManager cameraManager;
+    private static ScreenStreamManager screenStreamManager;
 
     private ServiceManager() {
         /* not instantiable */
@@ -107,5 +108,12 @@ public final class ServiceManager {
             }
         }
         return cameraManager;
+    }
+
+    public static ScreenStreamManager getScreenStreamManager() {
+        if (screenStreamManager == null) {
+            screenStreamManager = ScreenStreamManager.create();
+        }
+        return screenStreamManager;
     }
 }

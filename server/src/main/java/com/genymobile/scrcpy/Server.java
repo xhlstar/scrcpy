@@ -154,12 +154,15 @@ public final class Server {
                 asyncProcessors.add(audioRecorder);
             }
 
+            Ln.d("Using xhl xhl scrcpy ^_^------------------------------>:"+ options.getVideoSource());
             if (video) {
                 Streamer videoStreamer = new Streamer(connection.getVideoFd(), options.getVideoCodec(), options.getSendCodecMeta(),
                         options.getSendFrameMeta());
                 SurfaceCapture surfaceCapture;
                 if (options.getVideoSource() == VideoSource.DISPLAY) {
                     surfaceCapture = new ScreenCapture(device);
+                } else if( options.getVideoSource() == VideoSource.ATW) {
+                    surfaceCapture = new ATWScreenCapture();
                 } else {
                     surfaceCapture = new CameraCapture(options.getCameraId(), options.getCameraFacing(), options.getCameraSize(),
                             options.getMaxSize(), options.getCameraAspectRatio(), options.getCameraFps(), options.getCameraHighSpeed());
