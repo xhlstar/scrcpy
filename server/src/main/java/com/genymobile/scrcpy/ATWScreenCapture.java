@@ -39,6 +39,7 @@ public class ATWScreenCapture extends SurfaceCapture {
 
     public void init() {
         ServiceManager.getScreenStreamManager();
+        setSystemProperty(SCREEN_RECORD_STATE_PROPERTY, "0");
         //ServiceManager.getActivityManager().bindService(intent, connection, Context.BIND_AUTO_CREATE);
     }
 
